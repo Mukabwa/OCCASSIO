@@ -7,6 +7,8 @@ const authRoutes = require("./routes/authRoutes");
 const occasionRoutes = require( "./routes/occasionRoutes");
 const groupRoutes = require( "./routes/groupRoutes");
 const taskRoutes = require( "./routes/taskRoutes");
+const planningGroupTemplateRoutes = require( "./routes/planningGroupTemplateRoutes" );
+const activityRoutes = require( "./routes/activityRoutes");
 
 const app = express();
 
@@ -20,6 +22,9 @@ app.use(  "/api/auth",  authRoutes);
 app.use( "/api/occasions", occasionRoutes);
 app.use( "/api/groups", groupRoutes);
 app.use( "/api/tasks", taskRoutes);
+app.use( "/api/activities", activityRoutes);
+app.use("/api/planning-group-templates", planningGroupTemplateRoutes);
+
 
 // Test Route
 app.get("/", (req, res) => {

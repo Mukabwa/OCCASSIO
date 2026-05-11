@@ -21,6 +21,26 @@ const createGroup = async (
   }
 };
 
+const generateGroupsFromTemplates =
+  async (req, res) => {
+    try {
+      const groups =
+        await groupService.generateGroupsFromTemplates(
+          req.user._id,
+          req.body
+        );
+
+      res.status(201).json(
+        groups
+      );
+    } catch (error) {
+      res.status(400).json({
+        message:
+          error.message,
+      });
+    }
+  };
+
 const getOccasionGroups =
   async (req, res) => {
     try {
@@ -41,4 +61,5 @@ const getOccasionGroups =
 module.exports = {
   createGroup,
   getOccasionGroups,
+  generateGroupsFromTemplates,
 };

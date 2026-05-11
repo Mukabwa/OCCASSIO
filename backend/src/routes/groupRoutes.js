@@ -3,7 +3,10 @@ const express = require("express");
 const {
   createGroup,
   getOccasionGroups,
-} = require("../controllers/groupController");
+  generateGroupsFromTemplates,
+} = require(
+  "../controllers/groupController"
+);
 
 const authMiddleware = require(
   "../middleware/authMiddleware"
@@ -12,6 +15,11 @@ const authMiddleware = require(
 const router = express.Router();
 
 router.use(authMiddleware);
+
+router.post(
+  "/generate",
+  generateGroupsFromTemplates
+);
 
 router.post("/", createGroup);
 
